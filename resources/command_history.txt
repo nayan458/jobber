@@ -4,3 +4,6 @@ nx generated-type jobber-auth
     - configure this in project.json
 
 nx migrate-prisma jobber-auth
+
+
+npm i @nestjs/graphql @nestjs/apollo @apollo/server graphql --save
