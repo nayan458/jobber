@@ -32,8 +32,8 @@ jobs:
           node-version: 20
           cache: 'npm'
 
-      - run: Setup protoc
-      - uses: ardiono/setup-protoc@v3.0.0
+      - name: Setup protoc
+        uses: arduino/setup-protoc@v3.0.0
 
       - run: npm ci --legacy-peer-deps
       - uses: nrwl/nx-set-shas@v4
