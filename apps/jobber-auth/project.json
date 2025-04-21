@@ -16,7 +16,7 @@
           "args": ["node-env=development"]
         }
       },
-      "dependsOn": ["generate-types"]
+      "dependsOn": ["generate-prisma", "generate-ts-proto"]
     },
     "serve": {
       "executor": "@nx/js:node",
@@ -35,30 +35,35 @@
         }
       }
     },
-    "generate-types": {
+    "generate-prisma": {
       "command": "prisma generate",
       "options": {
-        "cwd": "apps/jobber-auth"
-      }
+        "cwd": "{projectRoot}",
+        "input": ["prisma/schema.prisma"]
+      },
+      "cache": true
     },
 
     "migrate-prisma": {
       "command": "prisma migrate dev",
       "options": {
-        "cwd": "apps/jobber-auth"
+        "cwd": "{projectRoot}"
       }
     },
     "migrate-reset": {
       "command": "prisma migrate reset",
       "options": {
-        "cwd": "apps/jobber-auth"
+        "cwd": "{projectRoot}"
       }
     },
     "test": {
-      "dependsOn": ["generate-types"],
+      "dependsOn": ["generate-prisma"],
       "options": {
         "passWithNoTests": true
       }
+    },
+    "generate-ts-proto": {
+      "command": "nx generate-ts-proto"
     }
   }
 }
