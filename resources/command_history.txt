@@ -18,3 +18,28 @@ cache: true
 
 package.json
 nx: 
+
+// asset set up
+"targetDefaults": {
+    "build": {
+      "inputs": [
+        "{projectRoot}/**/*",
+        "{workspaceRoot}/lib/**/*",
+        "{workspaceRoot}/proto/*"
+        ],
+      "options": {
+        "assets": [
+          {
+            "glob": "*.proto",
+            "input": "proto",
+            "output": "proto"
+          }
+        ]
+      } 
+    }
+  }
+
+
+  nx run-many -t serve -p project1 project 2
+
+  "request.credentials": "include"
