@@ -1,0 +1,14 @@
+- jobber.pdf
+- pulsar vs kafka [https://michaelguay.dev/why-apache-pulsar-is-better-for-scaling-node-js-applications-than-kafka/]
+
+- project.json not generated command [ command 1 ]
+
+- nx
+- nx nest
+- nx config [https://nx.dev/reference/nx-json]
+
+- github actions [https://docs.github.com/en/actions]
+
+------------------------------
+
+- prisma [https://www.prisma.io/docs]
