@@ -1,0 +1,5 @@
+mutation {
+  executeJob(executeJobInput: { name: "fibonacci" }) {
+    name
+  }
+}

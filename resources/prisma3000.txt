@@ -1,0 +1,18 @@
+mutation {
+  createUser(createUserInput: {
+    email: "mich@michaelguay.dev",
+    password: "SomeTestPassword123!"
+  }) {
+    id
+  }
+}
+
+
+mutation {
+  login(loginInput: {
+    email: "michael@michaelguay.dev",
+    password: "SomeTestPassword123!"
+  })  {
+		id    
+  }
+}

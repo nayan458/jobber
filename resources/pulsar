@@ -1,0 +1,3 @@
+bin/pulsar-admin topics list public/default
+
+in/pulsar-admin topics list stats persistent://public/default/fibonacci
