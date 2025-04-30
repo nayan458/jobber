@@ -16,7 +16,7 @@
           "args": ["node-env=development"]
         }
       },
-      "dependsOn": ["generate-prisma", "generate-ts-proto"]
+      "dependsOn": ["generate-prisma", "^build"]
     },
     "serve": {
       "executor": "@nx/js:node",
@@ -61,9 +61,6 @@
       "options": {
         "passWithNoTests": true
       }
-    },
-    "generate-ts-proto": {
-      "command": "nx generate-ts-proto"
     }
   }
 }

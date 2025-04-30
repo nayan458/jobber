@@ -5,8 +5,8 @@ import {
   AuthServiceController,
   AuthServiceControllerMethods,
   User,
-} from 'types/proto/auth';
-import { GqlAuthGuard } from './guards/gql-auth.guard';
+} from '@jobber/grpc';
+// import { GqlAuthGuard } from './guards/gql-auth.guard';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { UsersService } from '../users/users.service';
 import { TokenPayload } from './token-payload.interface';

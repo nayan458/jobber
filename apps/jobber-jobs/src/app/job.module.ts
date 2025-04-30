@@ -4,7 +4,7 @@ import { DiscoveryModule } from '@golevelup/nestjs-discovery';
 import { JobsService } from './jobs.service';
 import { JobResolver } from './jobs.resolver';
 import { join } from 'path';
-import { AUTH_PACKAGE_NAME } from 'types/proto/auth';
+import { AUTH_PACKAGE_NAME } from '@jobber/grpc';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { PulsarModule } from '@jobber/pulsar';
 
