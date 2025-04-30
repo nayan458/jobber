@@ -14,11 +14,11 @@ import {
   AUTH_PACKAGE_NAME,
   AUTH_SERVICE_NAME,
   AuthServiceClient,
-} from 'types/proto/auth';
+} from '@jobber/grpc';
 
 @Injectable()
 export class GqlAuthGuard implements CanActivate, OnModuleInit {
-  private authService: AuthServiceClient;
+  private authService!: AuthServiceClient;
   private readonly logger = new Logger(GqlAuthGuard.name);
 
   constructor(@Inject(AUTH_PACKAGE_NAME) private client: ClientGrpc) {}
