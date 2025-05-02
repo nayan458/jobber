@@ -16,7 +16,8 @@ async function bootstrap() {
     transport: Transport.GRPC,
     options: {
       package: AUTH_PACKAGE_NAME,
-      protoPath: join(__dirname, 'proto/auth.proto'),
+      // protoPath: join(__dirname, 'proto/auth.proto'),
+      protoPath: join(__dirname, '../../libs/grpc/proto/auth.proto'),
     },
   });
   await app.startAllMicroservices();

@@ -1,0 +1,54 @@
+# builder stage
+
+FROM node:18-slim AS builder
+
+WORKDIR /workspace
+# copy over all the files
+
+COPY package*.json ./
+COPY nx.json ./
+COPY tsconfig*.json ./
+COPY jest.config.ts ./
+COPY jest.preset.js ./
+COPY eslint.config.mjs ./
+
+COPY apps/jobber-jobs ./apps/jobber-jobs
+COPY libs/graphql ./libs/graphql
+COPY libs/grpc ./libs/grpc
+COPY libs/nestjs ./libs/nestjs
+COPY libs/pulsar ./libs/pulsar
+
+RUN npm install --legacy-peer-deps
+
+RUN apt-get update && apt-get install -y protobuf-compiler
+
+RUN npx nx build jobber-jobs
+
+FROM node:18-slim AS runner
+
+WORKDIR /app
+
+# from root
+
+COPY --from=builder /workspace/package.json ./
+COPY --from=builder /workspace/packag-lock.json ./
+
+# from app
+
+COPY --from=builder /workspace/apps/jobber-jobs/package.json ./apps/job/package.json
+
+# from library
+
+COPY --from=builder /workspace/libs/graphql/package.json /workspace/libs/graphql/package.json
+COPY --from=builder /workspace/libs/grpc/package.json /workspace/libs/grpc/package.json
+COPY --from=builder /workspace/libs/nestjs/package.json /workspace/libs/nestjs/package.json
+COPY --from=builder /workspace/libs/pulsar/package.json /workspace/libs/pulsar/package.json
+
+
+# RUN apt-get update && apt-get install -y openssl
+
+RUN npm ci --only=production
+
+COPY --from=builder /workspace/dist ./dist
+
+CMD ["node", "dist/app/jobber-jobs"]
