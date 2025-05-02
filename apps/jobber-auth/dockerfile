@@ -40,10 +40,10 @@ COPY --from=builder /workspace/apps/jobber-auth/package.json ./apps/job/package.
 
 # from library
 
-COPY --from=builder /workspace/libs/graphql/package.json /workspace/libs/graphql/package.json
-COPY --from=builder /workspace/libs/grpc/package.json /workspace/libs/grpc/package.json
-COPY --from=builder /workspace/libs/nestjs/package.json /workspace/libs/nestjs/package.json
-COPY --from=builder /workspace/libs/prisma/package.json /workspace/libs/prisma/package.json
+COPY --from=builder /workspace/libs/graphql/package.json ./libs/graphql/package.json
+COPY --from=builder /workspace/libs/grpc/package.json ./libs/grpc/package.json
+COPY --from=builder /workspace/libs/nestjs/package.json ./libs/nestjs/package.json
+COPY --from=builder /workspace/libs/prisma/package.json ./libs/prisma/package.json
 
 
 # RUN apt-get update && apt-get install -y openssl
